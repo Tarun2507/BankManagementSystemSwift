@@ -21,14 +21,20 @@ class Account {
         self.client = client;
     }
     func printAccountDetails(){
-        
+        print("Client id:\(self.client.client_id)\tClient name:\(self.client.client_name)\tClient address :\(self.client.client_address)\tContact:\(self.client.client_phone)\tAccount number :\(self.account_number)\tBalance:\(self.balance)\tAccount type:\(self.account_type)")
     }
     func fileFormat() ->String
         {
-        let line = String(self.client.client_id)+","+self.client.client_name+","+self.client.client_address+","+self.client.client_phone+","+String(self.account_number)+","+String(self.amount)+","+String(self.balance)+","+self.account_type+"\n"
+        let line = String(self.client.client_id)+","+self.client.client_name+","+self.client.client_address+","+self.client.client_phone+","+String(self.account_number)+","+String(self.balance)+","+self.account_type+"\n"
           return line
         }
-    func deposit() {
-        
+    func deposit(amount:Double) {
+        self.balance = self.balance + amount;
+    }
+    func withdraw(amount:Double) {
+        self.balance = self.balance - amount;
+    }
+    func payUtilityBills(amount:Double) {
+        self.balance = self.balance - amount;
     }
 }
