@@ -26,13 +26,13 @@ do {
         //split each line into words which are fields
         let fields = line.components(separatedBy: ",")
         let client = Client(client_id: Int(fields[0])!, client_name: fields[1], client_address: fields[2], client_phone: fields[3])
-        if fields[6] == "savings" {
+        if fields[6] == "savings" { // checking for savings account from file and creating savings account instance
             account = SavingsAccount(account_number:Int(fields[4])!,amount:Double(fields[5])!,account_type:fields[6],client:client,interest: 8.5)
         }
         if fields[6] == "current" {
           account =  CurrentAccount(account_number:Int(fields[4])!,amount:Double(fields[5])!,account_type:fields[6],client:client,interest: 7.5)
         }
-        accounts.append(account!)
+        accounts.append(account!) // appending to heterogeneous collection of accounts
         //print(accounts[0].account_number)
     }
  }
@@ -51,6 +51,7 @@ if user_choice == 2 {
     userAccess()
 }
 func adminAccess() {
+    //displaying the options to admin
     while(true)
     {
     print("Choose from the following options")
@@ -147,7 +148,7 @@ func createAccount() {
 func saveAccountDetailsIntoFile() {
     //file saving code
         var myString:String = ""
-           for acc in accounts{
+           for acc in accounts{ // iterating accounts
                myString += acc.fileFormat()
            }
            let data = myString.data(using: .utf8)
@@ -166,7 +167,7 @@ func viewUserDetails() {
     print("Enter user id")
     let user_id = Int(readLine()!)!
     for acc in accounts {
-        if acc.client.client_id == user_id {
+        if acc.client.client_id == user_id { //searching for user id and printing corresponding details
             acc.printAccountDetails()
         }
         }

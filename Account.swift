@@ -23,12 +23,14 @@ class Account {
     func printAccountDetails(){
         print("Client id:\(self.client.client_id)\tClient name:\(self.client.client_name)\tClient address :\(self.client.client_address)\tContact:\(self.client.client_phone)\tAccount number :\(self.account_number)\tBalance:\(self.balance)\tAccount type:\(self.account_type)")
     }
-    func fileFormat() ->String
+    func fileFormat() ->String // formatting the data of Account such that it is separated by commas in file
         {
+        // preparing line separated by commas
         let line = String(self.client.client_id)+","+self.client.client_name+","+self.client.client_address+","+self.client.client_phone+","+String(self.account_number)+","+String(self.balance)+","+self.account_type+"\n"
           return line
         }
     func deposit(amount:Double) {
+        // updating the balance
         self.balance = self.balance + amount;
     }
     func withdraw(amount:Double) {
